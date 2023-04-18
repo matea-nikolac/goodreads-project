@@ -43,4 +43,3 @@ class LoginView(APIView):
         print('TOKEN ->', token)
         
         return Response({ 'message': f"Welcome back, {user_to_login.username}", 'token': token })
-    

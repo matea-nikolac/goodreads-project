@@ -14,7 +14,6 @@ class Book(models.Model):
         ('wishlist', 'Wishlist'),
     )
     status = models.CharField(max_length=10, choices=status_choices)
-    # reviews = models.ManyToManyField('Review', related_name='books')
 
     def __str__(self):
-        return self.name
+        return f'{self.title} - {self.author}'

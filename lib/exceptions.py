@@ -3,8 +3,8 @@ from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError, NotFound, PermissionDenied
 from django.core.exceptions import ImproperlyConfigured
 from rest_framework import status
-# from books.models import Books
-# from reviews.models import Reviews
+from books.models import Book
+from reviews.models import Review
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -17,10 +17,10 @@ def exceptions(func):
             print(e.__class__.__name__)
             print(e)
             return Response({ 'detail': 'Unauthorized' }, status.HTTP_403_FORBIDDEN)
-        # except (NotFound, Book.DoesNotExist, Review.DoesNotExist) as e:
-        #     print(e.__class__.__name__)
-        #     print(e)
-        #     return Response(e.__dict__ if e.__dict__ else { 'detail': str(e) }, status.HTTP_404_NOT_FOUND)
+        except (NotFound, Book.DoesNotExist, Review.DoesNotExist) as e:
+            print(e.__class__.__name__)
+            print(e)
+            return Response(e.__dict__ if e.__dict__ else { 'detail': str(e) }, status.HTTP_404_NOT_FOUND)
         except (ValidationError, ImproperlyConfigured) as e:
             print(e.__class__.__name__)
             print(e)
