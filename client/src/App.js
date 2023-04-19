@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Browse from './components/Browse'
-import Profile from './components/Profile'
-import PageNavbar from './components/common/PageNavBar'
-import SingleBook from './components/book/SingleBook'
-import MyBooks from './components/book/MyBooks'
-import Login from './components/auth/Login'
-import Register from './components/auth/Register'
+
+import Browse from './components/Browse.js'
+import Profile from './components/Profile.js'
+import PageNavbar from './components/common/PageNavBar.js'
+import SingleBook from './components/book/SingleBook.js'
+import MyBooks from './components/book/MyBooks.js'
+import Login from './components/auth/Login.js'
+import Register from './components/auth/Register.js'
 
 const App = () => {
   return (
