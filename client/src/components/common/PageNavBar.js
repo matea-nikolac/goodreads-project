@@ -33,9 +33,10 @@ const PageNavbar = () => {
         </div>
         <ul className='nav-links' id='nav-links'>
           <li>
-            <Link to='/' className='nav-link' onClick={hideNavLinks}> Home </Link>
+            <Link to='/' className='nav-link' onClick={hideNavLinks}> Browse </Link>
           </li>
-          {showThis ? 
+
+          { isAuthenticated() ? 
             <>
               <li>
                 <Link to='/profile' className='nav-link' onClick={hideNavLinks}> Profile </Link>

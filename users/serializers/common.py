@@ -10,7 +10,6 @@ class UserSerializer(serializers.ModelSerializer):
     password_confirmation = serializers.CharField(write_only=True)
 
     def validate(self, data):
-        print('DATA BEFORE CUSTOM VALIDATION ->', data)
     
         password = data.pop('password')
         password_confirmation = data.pop('password_confirmation')
@@ -23,4 +22,4 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'profile_image', 'password', 'password_confirmation', 'books_added')
+        fields = ('id', 'username', 'email', 'password', 'password_confirmation', 'books_added')
