@@ -25,7 +25,7 @@ class BookListView(APIView):
         book.save()
         return Response(book.data, status.HTTP_201_CREATED)
     
-# View is for /api/oceans/:pk
+# View is for /api/books/:pk
 class BookDetailView(APIView):
     permission_classes = (IsAuthenticated,)
 

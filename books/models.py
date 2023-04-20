@@ -10,8 +10,8 @@ class Book(models.Model):
     pages = models.PositiveBigIntegerField()
     status_choices = (
         ('read', 'Read'),
-        ('reading', 'Reading'),
-        ('wishlist', 'Wishlist'),
+        ('reading', 'Currently reading'),
+        ('wishlist', 'Want to read'),
         ('none', 'None')
     )
     status = models.CharField(max_length=10, choices=status_choices)

@@ -37,17 +37,19 @@ const BrowseBooks = () => {
               {books.filter(book => book.genre === category).map(book => {
                 // console.log('book genre + category', book.genre, category)
                 return (
-                  <div key={book.id} className='book-card'>
-                    <div className='book-cover'>
-                      <img className='image' src={book.book_cover} alt={book.title} />
+                  <Link to={`books/${book.id}`} key={book.id} className='book-card'>
+                    <div key={book.id} className='book-card'>
+                      <div className='book-cover'>
+                        <img className='image' src={book.book_cover} alt={book.title} />
+                      </div>
+                      <div className='book-info'>
+                        {/* <h3>{book.title}</h3>
+                        <p>by {book.author}</p>
+                        <p>{book.summary}</p> */}
+                        {/* <Link to={`/books/${book.id}`} className='btn'>Details</Link> */}
+                      </div>
                     </div>
-                    <div className='book-info'>
-                      {/* <h3>{book.title}</h3>
-                      <p>by {book.author}</p>
-                      <p>{book.summary}</p> */}
-                      {/* <Link to={`/books/${book.id}`} className='btn'>Details</Link> */}
-                    </div>
-                  </div>
+                  </Link>
                 )
               })}
             </div>

@@ -1,0 +1,110 @@
+.containers {
+
+  display:flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 25px;
+  margin: 20px 0;
+
+  .cover-and-dropdown-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    .cover-container {
+      margin: 40px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 12px;
+
+      .image {
+        width: 250px;
+      }
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      .dropdown__button{
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        background-color:#3E8363;
+        border-radius: 15px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        padding: 8px 30px;
+
+        .dropdown__icon {
+          margin-left: 8px;
+          font-size: 12px;
+          transition: all 0.3s ease-in-out;
+        }
+
+        
+        // .dropdown__icon.open {
+        //   transform: rotate(180deg);
+        // }
+      }
+
+      .dropdown__menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border: 2px solid #ccc;
+        border-top: none;
+        border-radius: 0 0 4px 4px;
+        z-index: 1;
+        // display: flex;
+        // flex-direction: column;
+        margin-left: 9px;
+
+        .dropdown__menu-item{
+          display: block;
+          width: 100%;
+          font-size: 16px;
+          // font-weight: bold;
+          color: #333;
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          padding: 7px 33px;
+        }
+      }
+  
+    }
+  }
+
+  .info-container{
+    margin: 40px;
+    h2 {
+      margin-bottom: 30px;
+    }
+    
+    .info-text {
+      margin: 10px;
+    }
+
+    .info-text:not(:first-child) {
+      font-size: 16px;
+    }
+
+    // .info-text:last-child {
+    //   margin-bottom: 0;
+    // }
+  }
+}
+
+.review-container {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+
+
