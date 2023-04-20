@@ -1,0 +1,54 @@
+.browsePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  .bookCategory{
+    font-size: 25px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom:0px;
+    // margin-left: 50px;
+  }
+
+  .categoryDivider{
+    position: absolute;
+    left: 0;
+    right: 0; 
+    width: 100%;
+    border-top: 1px solid black;
+    margin: 10px;
+    // margin-left: ;
+    // margin-right: 0;
+    // padding-left: 0;
+    // padding-right: 0;
+  }
+
+  .books{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 60px;
+
+    .book-card {
+      width: 200px;
+      margin: 10px;
+      // border: 1px solid black;
+
+      // .book-cover {
+      //   height: 300px;
+      // }
+    }
+    
+  }
+
+  .image {
+    width: 100%;
+    object-fit: cover;
+    height: 300px;
+  }
+  
+}
+
+

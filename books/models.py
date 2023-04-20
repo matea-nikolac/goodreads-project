@@ -12,6 +12,7 @@ class Book(models.Model):
         ('read', 'Read'),
         ('reading', 'Reading'),
         ('wishlist', 'Wishlist'),
+        ('none', 'None')
     )
     status = models.CharField(max_length=10, choices=status_choices)
 

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import Browse from './components/Browse.js'
+import BrowseBooks from './components/BrowseBooks.js'
 import Profile from './components/Profile.js'
 import PageNavbar from './components/common/PageNavBar.js'
 import SingleBook from './components/book/SingleBook.js'
@@ -14,7 +14,7 @@ const App = () => {
       <BrowserRouter>
         <PageNavbar/>
         <Routes>
-          <Route path='/' element={<Browse />} />
+          <Route path='/' element={<BrowseBooks />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/books/:id' element={<SingleBook />} />
           <Route path='/my-books' element={<MyBooks />} />
