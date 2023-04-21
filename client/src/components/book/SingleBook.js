@@ -1,15 +1,11 @@
 import axios from 'axios'
-import { useParams, Link, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { isAuthenticated, getToken, userIsOwner } from '../../helpers/auth.js'
-// import DisplayPosts from './DisplayPosts'
-// import SpinnerComponent from '../common/Spinner'
-
+import { getToken,  getPayload } from '../../helpers/auth.js'
 
 
 const SingleBook = () => {
 
-  const navigate = useNavigate()
   const { id } = useParams()
 
   const [books, setBooks] = useState(null)
@@ -18,8 +14,12 @@ const SingleBook = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState('Add to your books')
 
-  const [formFields, setFormFields] = useState({ 
-    text: '',
+  const [user, setUser] = useState('')
+
+  const [ formFields, setFormFields] = useState({
+    read: [],
+    reading: '',
+    wishlist: '',
   })
 
 
@@ -33,17 +33,59 @@ const SingleBook = () => {
         })
         setBooks(data)
         console.log('BOOKS', books)
-        console.log(books.book_cover)
+        // console.log(books.book_cover)
       } catch (error) {
         setError(error)
       }
     }
     getBook()
-  }, [formFields, books])
+  }, [formFields])
+
+  //updating the user data info
+  useEffect(() => {
+    
+    const updateUser = async () => {
+      try {
+        const { data } = await axios.put(`/api/auth/users/${getPayload().sub}/`, { [selectedOption]: [id.toString()] })
+        console.log('DATA', data)
+      } catch (error) {
+        setError(error)
+        console.log(error)
+      }
+    }
+
+    updateUser()
+    console.log(selectedOption)
+  }, [selectedOption], [user])
+  
+
+  // getting the logged in user data
+
+
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        console.log(getPayload().sub)
+        const { data } = await axios.get(`/api/auth/users/${getPayload().sub}/`)
+        setFormFields(data)
+        // console.log(formFields)
+
+      } catch (error) {
+        setError(error)
+  
+      }
+    }
+    getUserData()
+  }, [])
+
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option)
     setIsOpen(false)
+    // console.log(selectedOption)
+    { books && setFormFields({ ...formFields, read: books.id })}
+
+    console.log('FORMDIELDS', formFields)
   }
 
   return (
@@ -62,13 +104,13 @@ const SingleBook = () => {
                 </button>
                 {isOpen && (
                   <div className="dropdown__menu">
-                    <button className="dropdown__menu-item" onClick={() => handleOptionSelect('Read')}>
+                    <button className="dropdown__menu-item" onClick={() => handleOptionSelect('read')} >
                       Read
                     </button>
-                    <button className="dropdown__menu-item" onClick={() => handleOptionSelect('Currently reading')}>
+                    <button className="dropdown__menu-item" onClick={() => handleOptionSelect('reading')}>
                       Currently reading
                     </button>
-                    <button className="dropdown__menu-item" onClick={() => handleOptionSelect('Want to read')}>
+                    <button className="dropdown__menu-item" onClick={() => handleOptionSelect('wishlist')}>
                     Want to read
                     </button>
                   </div>
@@ -89,7 +131,7 @@ const SingleBook = () => {
           </div>
         </>
         :
-        <h2>{error}</h2>
+        <h2>{error.message}</h2>
       }
     </>
   )

@@ -8,13 +8,6 @@ class Book(models.Model):
     summary = models.TextField()
     genre = models.CharField(max_length = 255)
     pages = models.PositiveBigIntegerField()
-    status_choices = (
-        ('read', 'Read'),
-        ('reading', 'Currently reading'),
-        ('wishlist', 'Want to read'),
-        ('none', 'None')
-    )
-    status = models.CharField(max_length=10, choices=status_choices)
 
     def __str__(self):
         return f'{self.title} - {self.author}'
