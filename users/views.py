@@ -88,13 +88,32 @@ class UserDetailView(APIView):
       updated_wishlist = serialized_user.validated_data.get('wishlist', [])
 
 
+      # check if the book is already in another list, if yes, remove it
+
+      for updated_list, original_list, other_lists in [
+          (updated_read, original_read, [original_reading, original_wishlist]),
+          (updated_reading, original_reading, [original_read, original_wishlist]),
+          (updated_wishlist, original_wishlist, [original_read, original_reading])
+      ]:
+          for book in updated_list:
+              for other_list in other_lists:
+                  if book in other_list:
+                      other_list.remove(book)
+                  
       # update the read, reading and wishlist fields with the updated values
       if updated_read:
         user.read.set(original_read + updated_read)
+      else:
+          user.read.set(original_read)
+
       if updated_reading:
-        user.read.set(original_reading + updated_reading)
+          user.reading.set(original_reading + updated_reading)
+      else:
+          user.reading.set(original_reading)
+
       if updated_wishlist:
-        user.read.set(original_wishlist + updated_wishlist)
+          user.wishlist.set(original_wishlist + updated_wishlist)
+      else:
+          user.wishlist.set(original_wishlist)
 
       return Response(serialized_user.data)
-  
