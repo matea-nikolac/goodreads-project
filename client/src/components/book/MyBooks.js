@@ -9,14 +9,16 @@ const MyBooks = () => {
   const [error, setError] = useState('')
   const [user, setUser] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [filteredBooks, setFilteredBooks] = useState([])
+  const [allBookIds, setAllBookIds] = useState([])
 
+  //!  fetch book data from the server
   useEffect(() => {
     const getBooks = async () => {
       try {
         const response = await axios.get('/api/books')
         const bookData = response.data
-        setBooks(bookData)
-        // console.log('BOOKS.ID', books[0].id)
+        setBooks(bookData)   
       } catch (error) {
         setError(error)
       }
@@ -24,7 +26,7 @@ const MyBooks = () => {
     getBooks()
   }, [])
 
-
+  //! fetch user data from the server
   useEffect(() => {
     const getUserData = async () => {
       try {
@@ -33,7 +35,6 @@ const MyBooks = () => {
         console.log('USERDATA', userData)
         
         setUser(userData)
-        // console.log('USER.BOOKS_ADDED', user.books_added)
       } catch (error) {
         setError(error)
       }
@@ -41,32 +42,71 @@ const MyBooks = () => {
     getUserData()
   }, [])
 
-  const categories = ['All', 'Read', 'Currently Reading', 'Want to Read']
+  const categories = ['all', 'read', 'reading', 'wishlist']
 
+  //!update the selected category
   const handleCategoryClick = (category) => {
     setSelectedCategory(category)
   }
 
-  // const getFilteredBooks = () => {
-  //   let filteredBooks = []
-  //   console.log('TRUE')
-  //   if (selectedCategory === 'all') {
-  //     filteredBooks = books.filter((book) => {
-  //       console.log('filteredBooks', book)
+  
+  //! 
+  useEffect(() => {
+    const filterAllUserIds = () => {
+      console.log('USER', user)
+  
+      const bookIds = []
+  
+      if (user.read) {
+        user.read.forEach((id) => {
+          bookIds.push(id)
+        })
+      }
+  
+      if (user.reading) {
+        user.reading.forEach((id) => {
+          bookIds.push(id)
+        })
+      }
+  
+      if (user.wishlist) {
+        user.wishlist.forEach((id) => {
+          bookIds.push(id)
+        })
+      }
+      console.log('BOOK IDS', bookIds)
+      setAllBookIds(bookIds)
+      return bookIds
+    }
 
-  //       // checking if the id of all the existing books is equal to the id of the book that
-  //       // the user has added
-  //       return user.books_added.some((addedBookId) => {
-  //         console.log('ADDED BOOK', addedBookId)
-  //         console.log(addedBookId,book.id)
-  //         return addedBookId === book.id
-  //       })
-  //     })
-  //   } else {
-  //     filteredBooks = books.filter((book) => book.category === selectedCategory)
-  //   }
-  //   return filteredBooks
-  // }
+    const filterAllUserBooks = () => {
+      let filtered = []
+      if (selectedCategory === 'all') {
+        filtered = books.filter((book) => allBookIds.includes(book.id))
+      } else {
+        filtered = books.filter((book) => user[selectedCategory].includes(book.id))
+      }
+
+      setFilteredBooks(filtered)
+    }
+
+    if (books.length > 0 && user) {
+      filterAllUserIds()
+      filterAllUserBooks()
+    }
+  
+  }, [selectedCategory, books, user])
+
+
+  // set all books as the default display once the page is opened
+  useEffect(()=> {
+    if (selectedCategory === 'all') {
+      let filtered = []
+      filtered = books.filter((book) => allBookIds.includes(book.id))
+      setFilteredBooks(filtered)
+    }
+  }, [books, user, allBookIds])
+
 
   return (
     <div className='my-books-container'>
@@ -81,18 +121,18 @@ const MyBooks = () => {
             onClick={() => handleCategoryClick('read')}
           > Read </li>
           <li 
-            className={selectedCategory === 'currentlyReading' ? 'active' : ''}
-            onClick={() => handleCategoryClick('currentlyReading')}
+            className={selectedCategory === 'reading' ? 'active' : ''}
+            onClick={() => handleCategoryClick('reading')}
           > Currently Reading </li>
           <li 
-            className={selectedCategory === 'wantToRead' ? 'active' : ''}
-            onClick={() => handleCategoryClick('wantToRead')}
+            className={selectedCategory === 'wishlist' ? 'active' : ''}
+            onClick={() => handleCategoryClick('wishlist')}
           > Want to Read </li>
         </ul>
       </div>
-      <div className='books-container'>
-        {books && user ? (
-          books.map((book) => (
+      <div className='books-container'> 
+        {filteredBooks && user ? (
+          filteredBooks.map((book) => (
             <Link to={`/books/${book.id}`} key={book.id} className='book-card'>
               <div key={book.id} className='book-card'>
                 <div className='book-cover'>
