@@ -14,18 +14,29 @@
     position: fixed;
     left: 0;
     margin-top: 20px;
+    text-decoration: none;
+
+    
     ul {
       list-style: none;
       padding: 0;
 
-      li {
-        cursor: pointer;
-        margin: 10px 10px;
-        padding: 10px;
+      .category-query{
+        text-decoration: none;
 
-        &.active {
-          background-color: #ccc;
-        }
+        li {
+          cursor: pointer;
+          margin: 10px 10px;
+          padding: 10px;
+          text-decoration: none;
+          color: black;
+  
+          &.active {
+            background-color: #ccc;
+            font-weight: bold;
+          }
+      }
+    
       }
     }
   }

@@ -1,0 +1,134 @@
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto; 
+  margin-top: 100px;
+  padding: 20px;
+  // font-family: Arial, sans-serif;
+
+  .top-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .profile-photo {
+      margin-right: 30px;
+
+      .image {
+        border-radius: 50%;
+      }
+    }
+
+    .username {
+      font-weight: bold;
+    }
+  }
+
+  .user-bookselves-container{
+    margin-top: 70px;
+
+    h4 {
+      display:flex;
+      justify-content: center;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 15px;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding-bottom: 20px;
+      display: flex;
+      justify-content: center;
+
+      li {
+        margin-right: 20px;
+        cursor: pointer;
+
+        a {
+          text-decoration: none;
+          color: #00635d;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  
+  .reading-challenge{
+    margin-top: 20px;
+
+    h4 {
+      display:flex;
+      justify-content: center;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 15px;
+    }
+    
+    .bar-text-update{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .progress-container{
+        height: 20px;
+        border: none;
+        border-radius: 10px;
+        background-color: #ddd;
+        overflow: hidden;
+
+        .progress-bar {
+          // width: 100%;
+          display:flex;
+          justify-content: center;
+          height: 20px;
+          border: none;
+          background-color: #007bff;
+        }
+      }
+
+      .read-quantity {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #777;
+      }
+
+      .update-goal-button {
+        margin-top: 10px;
+        padding: 8px 35px;
+        border: 1px solid #ddd;
+        border-radius: 15px;
+        background-color: transparent;
+        color: black;
+        font-weight: bold;
+        transition: background-color 0.5s ease-in-out;
+        font-size: small;
+      }
+
+      .update-goal-button:hover {
+        background-color: #eee;
+      }
+
+    }
+  }
+
+  .recent-updates{
+    margin-top: 20px;
+    h4 {
+      display:flex;
+      justify-content: center;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 15px;
+    }
+  }
+}

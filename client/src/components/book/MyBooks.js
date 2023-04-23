@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { getPayload } from '../../helpers/auth.js'
 
@@ -11,6 +11,9 @@ const MyBooks = () => {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [filteredBooks, setFilteredBooks] = useState([])
   const [allBookIds, setAllBookIds] = useState([])
+
+  const location = useLocation()
+  const navigate = useNavigate()
 
   //!  fetch book data from the server
   useEffect(() => {
@@ -47,6 +50,9 @@ const MyBooks = () => {
   //!update the selected category
   const handleCategoryClick = (category) => {
     setSelectedCategory(category)
+    const newUrl = `/my-books?category=${category}`
+    window.location.href = newUrl
+    // navigate(`/my-books?category=${category}`)
   }
 
   
@@ -98,7 +104,7 @@ const MyBooks = () => {
   }, [selectedCategory, books, user])
 
 
-  // set all books as the default display once the page is opened
+  //! set all books as the default display once the page is opened
   useEffect(()=> {
     if (selectedCategory === 'all') {
       let filtered = []
@@ -107,27 +113,41 @@ const MyBooks = () => {
     }
   }, [books, user, allBookIds])
 
+  //! set all books as the default display once the page is opened, or open the category query if there is one
+  useEffect(()=> {
+    const category = new URLSearchParams(location.search).get('category') || 'all'
+    setSelectedCategory(category)
+  }, [location.search])
+
 
   return (
     <div className='my-books-container'>
       <div className='select-category-container'>
         <ul>
-          <li 
-            className={selectedCategory === 'all' ? 'active' : ''}
-            onClick={() => handleCategoryClick('all')}
-          > All </li>
-          <li 
-            className={selectedCategory === 'read' ? 'active' : ''}
-            onClick={() => handleCategoryClick('read')}
-          > Read </li>
-          <li 
-            className={selectedCategory === 'reading' ? 'active' : ''}
-            onClick={() => handleCategoryClick('reading')}
-          > Currently Reading </li>
-          <li 
-            className={selectedCategory === 'wishlist' ? 'active' : ''}
-            onClick={() => handleCategoryClick('wishlist')}
-          > Want to Read </li>
+          <Link className='category-query' to={`/my-books?category=${selectedCategory}`}>
+            <li 
+              className={selectedCategory === 'all' ? 'active' : ''}
+              onClick={() => handleCategoryClick('all')}
+            > All </li>
+          </Link>
+          <Link className='category-query' to={`/my-books?category=${selectedCategory}`}>
+            <li 
+              className={selectedCategory === 'read' ? 'active' : ''}
+              onClick={() => handleCategoryClick('read')}
+            > Read </li>
+          </Link>
+          <Link className='category-query' to={`/my-books?category=${selectedCategory}`}>
+            <li 
+              className={selectedCategory === 'reading' ? 'active' : ''}
+              onClick={() => handleCategoryClick('reading')}
+            > Currently Reading </li>
+          </Link>
+          <Link className='category-query' to={`/my-books?category=${selectedCategory}`}>
+            <li 
+              className={selectedCategory === 'wishlist' ? 'active' : ''}
+              onClick={() => handleCategoryClick('wishlist')}
+            > Want to Read </li>
+          </Link>
         </ul>
       </div>
       <div className='books-container'> 
