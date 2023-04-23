@@ -8,12 +8,11 @@
 
   .top-container{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
     .profile-photo {
-      margin-right: 30px;
-
       .image {
         border-radius: 50%;
       }
@@ -21,11 +20,15 @@
 
     .username {
       font-weight: bold;
+      margin-top: 8px;
     }
   }
 
   .user-bookselves-container{
     margin-top: 70px;
+    @media (max-width: 660px) {
+      margin-top: 20px;
+    }
 
     h4 {
       display:flex;
@@ -35,6 +38,9 @@
       font-weight: bold;
       text-transform: uppercase;
       font-size: 15px;
+      @media (max-width: 660px) {
+        font-size: 13px;
+      }
     }
 
     ul {
@@ -43,6 +49,10 @@
       padding-bottom: 20px;
       display: flex;
       justify-content: center;
+      @media (max-width: 660px) {
+        font-size: 13px;
+        padding-bottom: 10px;
+      }
 
       li {
         margin-right: 20px;
@@ -71,6 +81,9 @@
       font-weight: bold;
       text-transform: uppercase;
       font-size: 15px;
+      @media (max-width: 660px) {
+        font-size: 13px;
+      }
     }
     
     .bar-text-update{
@@ -130,6 +143,9 @@
       font-weight: bold;
       text-transform: uppercase;
       font-size: 15px;
+      @media (max-width: 660px) {
+        font-size: 13px;
+      }
     }
 
     .recent-update-container{
@@ -153,6 +169,9 @@
           h5{
             font-weight: bold;
             font-size: 17px;
+            @media (max-width: 660px) {
+              font-size: 13px;
+            }
 
             .book-card{
               color:black;
@@ -166,6 +185,9 @@
           }
           p {
             font-size: 14px;
+            @media (max-width: 660px) {
+              font-size: 12px;
+            }
           }
         }
       }

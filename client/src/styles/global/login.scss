@@ -5,6 +5,7 @@
   height: 100vh;
   background-color: #f2f2f1;
 
+
   .login-border {
     padding: 30px;
     border: 1px solid rgb(204, 204, 204);
@@ -13,6 +14,12 @@
     max-width: 500px;
     width: 100%;
     border-radius: 4px;
+
+    @media (max-width: 660px) {
+      width: 90vw;
+      margin: 0;
+      padding: 20px;
+    }
   
     form {
       display: flex;

@@ -14,7 +14,15 @@ main {
     padding: 25px;
     margin: 20px 0;
 
-    
+    @media (max-width: 660px) {
+      flex-direction: column;
+    }
+
+    @media (max-width: 660px) {
+      padding: 10px;
+      margin: 10px 0;
+    }
+
 
     .cover-and-dropdown-container{
       display:flex;
@@ -29,6 +37,10 @@ main {
 
         .image {
           width: 250px;
+
+          @media (max-width: 660px) {
+            width: 150px;
+          }
         }
       }
 
@@ -46,16 +58,16 @@ main {
           transition: all 0.3s ease-in-out;
           padding: 8px 30px;
 
+          @media (max-width: 660px) {
+            font-size: 12px;
+          }
+
           .dropdown__icon {
             margin-left: 8px;
             font-size: 12px;
             transition: all 0.3s ease-in-out;
           }
 
-          
-          // .dropdown__icon.open {
-          //   transform: rotate(180deg);
-          // }
         }
 
         .dropdown__menu {
@@ -68,8 +80,6 @@ main {
           border-top: none;
           border-radius: 0 0 4px 4px;
           z-index: 1;
-          // display: flex;
-          // flex-direction: column;
           margin-left: 9px;
 
           .dropdown__menu-item{
@@ -82,6 +92,12 @@ main {
             border: none;
             cursor: pointer;
             padding: 7px 33px;
+
+            @media (max-width: 660px) {
+              font-size: 12px;
+            }
+
+            
           }
         }
     
@@ -92,19 +108,23 @@ main {
       margin: 40px;
       h2 {
         margin-bottom: 30px;
+        @media (max-width: 660px) {
+          font-size: 17px;
+        }
       }
       
       .info-text {
         margin: 10px;
+
       }
 
       .info-text:not(:first-child) {
         font-size: 16px;
+        @media (max-width: 660px) {
+          font-size: 12px;
+        }
       }
 
-      // .info-text:last-child {
-      //   margin-bottom: 0;
-      // }
     }
     
   }
@@ -116,16 +136,25 @@ main {
     // background-color: #f5f5f5;
     border-radius: 5px;
 
+    @media (max-width: 660px) {
+      padding-top: 0px;
+    }
+
 
     h3{
       font-size: x-large;
-      // margin-bottom: 30px;
-      // border-bottom: 1px solid #ccc;
       padding-bottom: 20px;
+      @media (max-width: 660px) {
+        font-size: medium;
+      }
+  
     }
 
     .add-review {
       margin: 10px 0;
+      @media (max-width: 660px) {
+        margin: 5px 0;
+      }
     }
     
     .add-review input[type="text"] {
@@ -135,23 +164,32 @@ main {
       border: none;
       border-radius: 5px;
       box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+
+      @media (max-width: 660px) {
+        padding: 5px;
+        font-size: 12px;
+      }
     }
     
     .log-in-to-comment {
       margin: 10px 0;
       font-size: 16px;
       color: red;
+      @media (max-width: 660px) {
+        font-size: 12px;
+      }
     }
 
     .review {
 
-      // margin-top: 12px;
-      // padding: 8 px;
       border-bottom: 1px solid #ccc;
-      // border-radius: 5px;
       padding: 20px 0;
       display:flex;
       justify-content: space-between;
+
+      @media (max-width: 660px) {
+        padding: 10px;
+    }
       
 
       .left-review-container {
@@ -165,10 +203,16 @@ main {
               object-fit: cover;
               border-radius: 50%;
               margin-right: 20px;
+              @media (max-width: 660px) {
+                width: 20px;
+              }
               }
             }
           .username-span{
             font-weight: bold;
+            @media (max-width: 660px) {
+              font-size: 12px;
+            }
           }
         }
 
@@ -186,12 +230,21 @@ main {
             height: auto;
             display: flex;
 
+            @media (max-width: 660px) {
+              font-size: 12px;
+              min-width: 270px;
+              min-height: 100px;
+            }
+
           }
           .review-text {
             display: inline-block;
             margin: 0;
             padding: 0;
             width: 100%;
+            @media (max-width: 660px) {
+              font-size: 12px;
+            }
           }
             
         }

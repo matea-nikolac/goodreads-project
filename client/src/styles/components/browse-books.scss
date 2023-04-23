@@ -1,20 +1,25 @@
-.browsePage {
+.browse-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   margin-top: 50px;
   
-
-  .bookCategory{
+  .book-category{
     font-size: 25px;
     text-align: center;
     margin-top: 40px;
     margin-bottom:0px;
     // margin-left: 50px;
+    @media (max-width: 660px) {
+      font-size: 13px;
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom:0px;
+    }
   }
 
-  .categoryDivider{
+  .category-divider{
     position: absolute;
     left: 0;
     right: 0; 
@@ -32,15 +37,17 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 60px;
+    @media (max-width: 660px) {
+      margin-top: 15px;
+    }
 
     .book-card {
       width: 200px;
       margin: 10px;
-      // border: 1px solid black;
-
-      // .book-cover {
-      //   height: 300px;
-      // }
+      @media (max-width: 660px) {
+        width: 90px;
+        margin: 5px;
+      }
     }
     
   }
@@ -49,8 +56,10 @@
     width: 100%;
     object-fit: cover;
     height: 300px;
+    @media (max-width: 660px) {
+      height: 150px;
+    }
+
   }
   
 }
-
-

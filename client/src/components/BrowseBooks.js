@@ -27,12 +27,12 @@ const BrowseBooks = () => {
   const categories = ['self-help', 'novel', 'biography', 'fantasy']
   
   return (
-    <div className='browsePage'>
+    <div className='browse-page'>
       {books.length > 0 && categories.map(category => {
         return (
-          <div className='bookWrapper'key={category}>
-            <h2 className='bookCategory'>{category}</h2>
-            <div className='categoryDivider'></div>
+          <div className='book-wrapper'key={category}>
+            <h2 className='book-category'>{category}</h2>
+            <div className='category-divider'></div>
             <div className='books'>
               {books.filter(book => book.genre === category).map(book => {
                 // console.log('book genre + category', book.genre, category)
