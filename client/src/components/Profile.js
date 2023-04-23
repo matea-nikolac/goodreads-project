@@ -10,13 +10,14 @@ const Profile = () => {
   const [user, setUser] = useState('')
   const [readingChallenge, setReadingChallenge] = useState('')
 
-  //!  fetch book data from the server
+  // fetch book data from the server
   useEffect(() => {
     const getBooks = async () => {
       try {
         const response = await axios.get('/api/books')
         const bookData = response.data
         setBooks(bookData)   
+        console.log('book', bookData)
       } catch (error) {
         setError(error)
       }
@@ -24,7 +25,7 @@ const Profile = () => {
     getBooks()
   }, [])
 
-  //! fetch user data from the server
+  // fetch user data from the server
   useEffect(() => {
     const getUserData = async () => {
       try {
@@ -33,6 +34,7 @@ const Profile = () => {
         console.log('USERDATA', userData)
         
         setUser(userData)
+        console.log('user', user)
       } catch (error) {
         setError(error)
       }
@@ -40,6 +42,41 @@ const Profile = () => {
     getUserData()
   }, [])
 
+  // Generate recent updates
+
+  const generateRecentUpdates = (category, statusText) => {
+    if (user && user[category].length > 0 ){
+      return (
+        user[category].map((bookId) => {
+          const book = books.find((b) => b.id === bookId)
+          if (book) {
+            return (
+              <div className='recent-update-container' key={book.id}>
+                <div className='status-text'>
+                  <p>{`${user.username} ${statusText}`}</p>
+                </div>
+                <div className='bottom-container'>
+                  <div className='image-container'>
+                    <Link to={`/books/${book.id}`} key={book.id} className='book-card'>
+                      <img className='image' src={book.book_cover} alt={book.title} />
+                    </Link>
+                  </div>
+                  <div className='title-author-container'>
+                    <h5>
+                      <Link to={`/books/${book.id}`} key={book.id} className='book-card'>
+                        {book.title}
+                      </Link>
+                    </h5>
+                    <p>by {book.author} </p>
+                  </div>
+                </div>
+              </div>
+            )
+          }
+        })
+      )
+    }
+  }
 
   return (
     <div className='profile-container'>
@@ -51,11 +88,11 @@ const Profile = () => {
           />
         </div>
         <div className='username'>
-          <p> username </p>
+          <p> {user.username} </p>
         </div>
       </div>
       <div className='user-bookselves-container'>
-        {user && <h4>{`${user.username}'s`}   Bookshelves</h4>}
+        {user && <h4>{`${user.username}'s`} Bookshelves</h4>}
         <ul>
           { user && (
             <>
@@ -85,7 +122,9 @@ const Profile = () => {
       </div>
       <div className='recent-updates'>
         <h4>Recent Updates</h4>
-        <p> Recent updates will go here </p>
+        {generateRecentUpdates('read', 'has read')}
+        {generateRecentUpdates('reading', 'is currently reading')}
+        {generateRecentUpdates('wishlist', 'wants to read')}
       </div>
     </div>
 

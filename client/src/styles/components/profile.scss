@@ -5,6 +5,7 @@
   padding: 20px;
   // font-family: Arial, sans-serif;
 
+
   .top-container{
     display: flex;
     align-items: center;
@@ -129,6 +130,47 @@
       font-weight: bold;
       text-transform: uppercase;
       font-size: 15px;
+    }
+
+    .recent-update-container{
+      display:flex;
+      flex-direction: column;
+      margin: 10px 10px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 20px;
+
+      .bottom-container{
+        display: flex;
+        .image-container{
+          .image{
+            width:70px;
+          }
+        }
+        .title-author-container{
+          margin-left: 15px;
+          margin-top: 7px;
+
+          h5{
+            font-weight: bold;
+            font-size: 17px;
+
+            .book-card{
+              color:black;
+              text-decoration: none;
+            }
+
+            .book-card:hover{
+              text-decoration: underline;
+            }
+
+          }
+          p {
+            font-size: 14px;
+          }
+        }
+      }
+
+  
     }
   }
 }
