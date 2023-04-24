@@ -25,7 +25,7 @@ const PageNavbar = () => {
   return (
     <nav>
       <div className='nav-container'>
-        <Link to='/' className='nav-logo' onClick={hideNavLinks}> GoodReads </Link> 
+        <Link to='/' className='nav-logo' onClick={hideNavLinks}> goodreads </Link> 
         <div className='nav-toggle' onClick={handleToggle}>
           <span></span>
           <span></span>

@@ -26,7 +26,7 @@ const BrowseBooks = () => {
     getBooks()
   }, [])
 
-  const categories = ['self-help', 'novel', 'biography', 'fantasy']
+  const categories = ['non-fiction', 'novel', 'biography', 'fantasy', 'science']
   
   return (
     <>
