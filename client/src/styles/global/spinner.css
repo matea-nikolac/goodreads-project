@@ -1,0 +1,8 @@
+.spinner-container {
+  display: flex;
+  margin-top: 100px;
+  justify-content: center;
+}
+.spinner-container .spinner-gif {
+  width: 40px;
+}/*# sourceMappingURL=spinner.css.map */

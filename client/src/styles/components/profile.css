@@ -1,0 +1,193 @@
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 20px;
+}
+.profile-container .top-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.profile-container .top-container .profile-photo .image {
+  border-radius: 50%;
+}
+.profile-container .top-container .username {
+  font-weight: bold;
+  margin-top: 8px;
+}
+.profile-container .user-bookselves-container {
+  margin-top: 70px;
+}
+@media (max-width: 660px) {
+  .profile-container .user-bookselves-container {
+    margin-top: 20px;
+  }
+}
+.profile-container .user-bookselves-container h4 {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+@media (max-width: 660px) {
+  .profile-container .user-bookselves-container h4 {
+    font-size: 13px;
+  }
+}
+.profile-container .user-bookselves-container ul {
+  list-style-type: none;
+  margin: 0;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 660px) {
+  .profile-container .user-bookselves-container ul {
+    font-size: 13px;
+    padding-bottom: 10px;
+  }
+}
+.profile-container .user-bookselves-container ul li {
+  margin-right: 20px;
+  cursor: pointer;
+}
+.profile-container .user-bookselves-container ul li a {
+  text-decoration: none;
+  color: #00635d;
+}
+.profile-container .user-bookselves-container ul li a:hover {
+  text-decoration: underline;
+}
+.profile-container .reading-challenge {
+  margin-top: 20px;
+}
+.profile-container .reading-challenge h4 {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+@media (max-width: 660px) {
+  .profile-container .reading-challenge h4 {
+    font-size: 13px;
+  }
+}
+.profile-container .reading-challenge .bar-text-update {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-container .reading-challenge .bar-text-update .progress-container {
+  height: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ddd;
+  overflow: hidden;
+}
+.profile-container .reading-challenge .bar-text-update .progress-container .progress-bar {
+  display: flex;
+  justify-content: center;
+  height: 20px;
+  border: none;
+  background-color: #007bff;
+}
+.profile-container .reading-challenge .bar-text-update .read-quantity {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #777;
+}
+.profile-container .reading-challenge .bar-text-update .goal-update-button-input {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.profile-container .reading-challenge .bar-text-update .goal-update-button-input input {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-right: 10px;
+  font-size: 15px;
+  width: 150px;
+  box-shadow: none;
+  border-radius: 5px;
+  text-align: center;
+}
+.profile-container .reading-challenge .bar-text-update .update-goal-button {
+  margin-top: 10px;
+  padding: 8px 35px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  background-color: transparent;
+  color: black;
+  font-weight: bold;
+  transition: background-color 0.5s ease-in-out;
+  font-size: small;
+}
+.profile-container .reading-challenge .bar-text-update .update-goal-button:hover {
+  background-color: #eee;
+}
+.profile-container .recent-updates {
+  margin-top: 20px;
+}
+.profile-container .recent-updates h4 {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+@media (max-width: 660px) {
+  .profile-container .recent-updates h4 {
+    font-size: 13px;
+  }
+}
+.profile-container .recent-updates .recent-update-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+.profile-container .recent-updates .recent-update-container .bottom-container {
+  display: flex;
+}
+.profile-container .recent-updates .recent-update-container .bottom-container .image-container .image {
+  width: 70px;
+}
+.profile-container .recent-updates .recent-update-container .bottom-container .title-author-container {
+  margin-left: 15px;
+  margin-top: 7px;
+}
+.profile-container .recent-updates .recent-update-container .bottom-container .title-author-container h5 {
+  font-weight: bold;
+  font-size: 17px;
+}
+@media (max-width: 660px) {
+  .profile-container .recent-updates .recent-update-container .bottom-container .title-author-container h5 {
+    font-size: 13px;
+  }
+}
+.profile-container .recent-updates .recent-update-container .bottom-container .title-author-container h5 .book-card {
+  color: black;
+  text-decoration: none;
+}
+.profile-container .recent-updates .recent-update-container .bottom-container .title-author-container h5 .book-card:hover {
+  text-decoration: underline;
+}
+.profile-container .recent-updates .recent-update-container .bottom-container .title-author-container p {
+  font-size: 14px;
+}
+@media (max-width: 660px) {
+  .profile-container .recent-updates .recent-update-container .bottom-container .title-author-container p {
+    font-size: 12px;
+  }
+}/*# sourceMappingURL=profile.css.map */

@@ -1,0 +1,294 @@
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+main .containers {
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  padding: 25px;
+  margin: 20px 0;
+}
+@media (max-width: 660px) {
+  main .containers {
+    flex-direction: column;
+  }
+}
+@media (max-width: 660px) {
+  main .containers {
+    padding: 10px;
+    margin: 10px 0;
+  }
+}
+main .containers .cover-and-dropdown-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main .containers .cover-and-dropdown-container .cover-container {
+  margin: 40px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 12px;
+}
+main .containers .cover-and-dropdown-container .cover-container .image {
+  width: 250px;
+}
+@media (max-width: 660px) {
+  main .containers .cover-and-dropdown-container .cover-container .image {
+    width: 150px;
+  }
+}
+main .containers .cover-and-dropdown-container .dropdown {
+  position: relative;
+  display: inline-block;
+}
+main .containers .cover-and-dropdown-container .dropdown .dropdown__button {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #3E8363;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  padding: 8px 30px;
+}
+@media (max-width: 660px) {
+  main .containers .cover-and-dropdown-container .dropdown .dropdown__button {
+    font-size: 12px;
+  }
+}
+main .containers .cover-and-dropdown-container .dropdown .dropdown__button .dropdown__icon {
+  margin-left: 8px;
+  font-size: 12px;
+  transition: all 0.3s ease-in-out;
+}
+main .containers .cover-and-dropdown-container .dropdown .dropdown__menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  z-index: 1;
+  margin-left: 9px;
+}
+main .containers .cover-and-dropdown-container .dropdown .dropdown__menu .dropdown__menu-item {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  color: #333;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 7px 33px;
+}
+@media (max-width: 660px) {
+  main .containers .cover-and-dropdown-container .dropdown .dropdown__menu .dropdown__menu-item {
+    font-size: 12px;
+  }
+}
+main .containers .info-container {
+  margin: 10px;
+}
+main .containers .info-container h2 {
+  margin-bottom: 30px;
+}
+@media (max-width: 660px) {
+  main .containers .info-container h2 {
+    font-size: 17px;
+  }
+}
+main .containers .info-container .info-text {
+  margin: 10px;
+}
+main .containers .info-container .info-text:not(:first-child) {
+  font-size: 16px;
+}
+@media (max-width: 660px) {
+  main .containers .info-container .info-text:not(:first-child) {
+    font-size: 12px;
+  }
+}
+main .review-container {
+  padding-top: 20px;
+  padding-left: 70px;
+  border-radius: 5px;
+}
+@media (max-width: 660px) {
+  main .review-container {
+    padding-top: 0px;
+  }
+}
+main .review-container h3 {
+  font-size: x-large;
+  padding-bottom: 20px;
+}
+@media (max-width: 660px) {
+  main .review-container h3 {
+    font-size: medium;
+  }
+}
+main .review-container .add-review {
+  margin: 10px 0;
+}
+@media (max-width: 660px) {
+  main .review-container .add-review {
+    margin: 5px 0;
+  }
+}
+main .review-container .add-review input[type=text] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 660px) {
+  main .review-container .add-review input[type=text] {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
+main .review-container .log-in-to-comment {
+  margin: 10px 0;
+  font-size: 16px;
+  color: red;
+}
+@media (max-width: 660px) {
+  main .review-container .log-in-to-comment {
+    font-size: 12px;
+  }
+}
+main .review-container .review {
+  border-bottom: 1px solid #ccc;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 660px) {
+  main .review-container .review {
+    padding: 10px;
+  }
+}
+main .review-container .review .left-review-container .single-review-username {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+main .review-container .review .left-review-container .single-review-username .image-div .image {
+  width: 50px;
+  height: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+@media (max-width: 660px) {
+  main .review-container .review .left-review-container .single-review-username .image-div .image {
+    width: 20px;
+  }
+}
+main .review-container .review .left-review-container .single-review-username .username-span {
+  font-weight: bold;
+}
+@media (max-width: 660px) {
+  main .review-container .review .left-review-container .single-review-username .username-span {
+    font-size: 12px;
+  }
+}
+main .review-container .review .left-review-container .review-margin {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+main .review-container .review .left-review-container .review-margin .review-input {
+  min-width: 600px;
+  min-height: 150px;
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+@media (max-width: 660px) {
+  main .review-container .review .left-review-container .review-margin .review-input {
+    font-size: 12px;
+    min-width: 270px;
+    min-height: 100px;
+  }
+}
+main .review-container .review .left-review-container .review-margin .review-text {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+@media (max-width: 660px) {
+  main .review-container .review .left-review-container .review-margin .review-text {
+    font-size: 12px;
+  }
+}
+main .review-container .review .right-review-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 30px;
+}
+main .review-container .review .right-review-container .delete-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .review-container .review .right-review-container .delete-button-container .delete-button {
+  background-color: transparent;
+  border: none;
+  color: #999999;
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 8px;
+  padding: 0;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+main .review-container .review .right-review-container .delete-button-container .delete-button:hover {
+  color: #666666;
+}
+main .review-container .review .right-review-container .edit-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+main .review-container .review .right-review-container .edit-button-container .edit-button {
+  background-color: transparent;
+  border: none;
+  color: #999999;
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 8px;
+  padding: 0;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+main .review-container .review .right-review-container .edit-button-container .edit-button:hover {
+  color: #666666;
+}
+main .review-container .login-and-first-review {
+  margin: 20px 0;
+}
+main .review-container .login-and-first-review .first-review {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+main .review-container .login-and-first-review .log-in-paragraph {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}/*# sourceMappingURL=single-book.css.map */
