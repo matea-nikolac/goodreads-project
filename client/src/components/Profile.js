@@ -89,7 +89,7 @@ const Profile = () => {
           <div className='top-container'>
             <div className='profile-photo'>
               <img className='image' 
-                src='https://cdn-icons-png.flaticon.com/512/219/219969.png?w=1480&t=st=1682288103~exp=1682288703~hmac=2f6fc13c14d8896e5c1f1f8d9988f34045a4583f72e5fd550001ab0f120135ff' 
+                src={user.profile_image}
                 style={{ width: '100px', height: '100px' }}
               />
             </div>

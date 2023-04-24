@@ -111,7 +111,7 @@ const SingleBook = () => {
         if (data.read.includes(parseInt(id))) {
           setBookStatus('Read')
         } else if (data.reading.includes((parseInt(id)))) {
-          setBookStatus('Reading')
+          setBookStatus('Currently Reading')
         } else if (data.wishlist.includes((parseInt(id)))) {
           setBookStatus('Want to Read')
         } else {
@@ -172,7 +172,7 @@ const SingleBook = () => {
           book: books.id,
         }
 
-        // console.log('REVIEWDATA', reviewData)
+        console.log('REVIEWDATA', reviewData)
 
         const { data } = await axios.post('/api/reviews/', reviewData, {
           headers: {
@@ -329,7 +329,7 @@ const SingleBook = () => {
                       <div className='left-review-container'>
                         <div className='single-review-username'>
                           <div className='image-div'>
-                            <img className='image' src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' />
+                            <img className='image' src={review.owner.profile_image} />
                           </div>
                           <span className='username-span'>{review.owner.username}</span>
                         </div>
@@ -364,13 +364,23 @@ const SingleBook = () => {
                 })}
               </>
               :
-              <div className='login-and-first-review'>
-                {isAuthenticated() ?
-                  <p className='first-review'>Be the first to review!</p>
+              <>
+                { books.length > 0 ?
+                  <div>
+                    <div className='login-and-first-review'>
+                      {isAuthenticated() ?
+                        <p className='first-review'>Be the first to review!</p>
+                        :
+                        <p className='log-in-paragraph'>Please login to leave a review</p>
+                      }
+                    </div>
+                    {/* other code to display the reviews */}
+                  </div>
                   :
-                  <p className='log-in-paragraph'>Please login to leave a review</p>
+                  <SpinnerComponent />
                 }
-              </div>
+              </>
+              
             }
           </div>
         </>
