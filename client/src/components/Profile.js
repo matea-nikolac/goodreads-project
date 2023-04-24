@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { getToken, isAuthenticated, getPayload } from '../helpers/auth.js'
+import SpinnerComponent from './common/SpinnerComponent.js'
+
 
 const Profile = () => {
 
@@ -29,12 +31,14 @@ const Profile = () => {
   useEffect(() => {
     const getUserData = async () => {
       try {
+        // setTimeout(async () => {
         const response = await axios.get(`/api/auth/users/${getPayload().sub}`)
         const userData = response.data
         console.log('USERDATA', userData)
         
         setUser(userData)
         console.log('user', user)
+        // }, 50000)
       } catch (error) {
         setError(error)
       }
@@ -79,54 +83,63 @@ const Profile = () => {
   }
 
   return (
-    <div className='profile-container'>
-      <div className='top-container'>
-        <div className='profile-photo'>
-          <img className='image' 
-            src='https://cdn-icons-png.flaticon.com/512/219/219969.png?w=1480&t=st=1682288103~exp=1682288703~hmac=2f6fc13c14d8896e5c1f1f8d9988f34045a4583f72e5fd550001ab0f120135ff' 
-            style={{ width: '100px', height: '100px' }}
-          />
-        </div>
-        <div className='username'>
-          <p> {user.username} </p>
-        </div>
-      </div>
-      <div className='user-bookselves-container'>
-        {user && <h4>{`${user.username}'s`} Bookshelves</h4>}
-        <ul>
-          { user && (
-            <>
-              <li><Link to="/my-books?category=all">All ({user.read.length + user.reading.length + user.wishlist.length })</Link></li>
-              <li><Link to="/my-books?category=read">Read ({user.read.length})</Link></li>
-              <li><Link to="/my-books?category=reading">Currently Reading ({user.reading.length}) </Link></li>
-              <li><Link to="/my-books?category=wishlist">Want to Read ({user.wishlist.length}) </Link></li>
-            </>
-          )}
-        </ul>
-      </div>
-      <div className='reading-challenge'>
-        <div>
-          <h4> Reading Challenge</h4>
-          <div className='bar-text-update'>
-            <div className='progress-container'>
-              <progress className = 'progress-bar' value="50" max="100"></progress>
+    <>
+      {user ? (
+        <div className='profile-container'>
+          <div className='top-container'>
+            <div className='profile-photo'>
+              <img className='image' 
+                src='https://cdn-icons-png.flaticon.com/512/219/219969.png?w=1480&t=st=1682288103~exp=1682288703~hmac=2f6fc13c14d8896e5c1f1f8d9988f34045a4583f72e5fd550001ab0f120135ff' 
+                style={{ width: '100px', height: '100px' }}
+              />
             </div>
-            <div className='read-quantity'>
-              <p>You read 10 out of 20 books. </p>
-            </div>
-            <div>
-              <button className='update-goal-button'>Update Goal</button>
+            <div className='username'>
+              <p> {user.username} </p>
             </div>
           </div>
+          <div className='user-bookselves-container'>
+            {user && <h4>{`${user.username}'s`} Bookshelves</h4>}
+            <ul>
+              { user && (
+                <>
+                  <li><Link to="/my-books?category=all">All ({user.read.length + user.reading.length + user.wishlist.length })</Link></li>
+                  <li><Link to="/my-books?category=read">Read ({user.read.length})</Link></li>
+                  <li><Link to="/my-books?category=reading">Currently Reading ({user.reading.length}) </Link></li>
+                  <li><Link to="/my-books?category=wishlist">Want to Read ({user.wishlist.length}) </Link></li>
+                </>
+              )}
+            </ul>
+          </div>
+          <div className='reading-challenge'>
+            <div>
+              <h4> Reading Challenge</h4>
+              <div className='bar-text-update'>
+                <div className='progress-container'>
+                  <progress className = 'progress-bar' value="50" max="100"></progress>
+                </div>
+                <div className='read-quantity'>
+                  <p>You read 10 out of 20 books. </p>
+                </div>
+                <div>
+                  <button className='update-goal-button'>Update Goal</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='recent-updates'>
+            <h4>Recent Updates</h4>
+            {generateRecentUpdates('read', 'has read')}
+            {generateRecentUpdates('reading', 'is currently reading')}
+            {generateRecentUpdates('wishlist', 'wants to read')}
+          </div>
         </div>
-      </div>
-      <div className='recent-updates'>
-        <h4>Recent Updates</h4>
-        {generateRecentUpdates('read', 'has read')}
-        {generateRecentUpdates('reading', 'is currently reading')}
-        {generateRecentUpdates('wishlist', 'wants to read')}
-      </div>
-    </div>
+      ) : (
+        error ?
+          <h2>{error.message}</h2>
+          :
+          <SpinnerComponent/>
+      )}
+    </>
 
   )
 }

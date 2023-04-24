@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { getPayload } from '../../helpers/auth.js'
+import SpinnerComponent from '../common/SpinnerComponent.js'
 
 const MyBooks = () => {
 
@@ -163,7 +164,10 @@ const MyBooks = () => {
           ))
         )
           :
-          <p>{error.message}</p>
+          error ?
+            <h2>{error.message}</h2>
+            :
+            <SpinnerComponent/>
 
         }
       </div>
