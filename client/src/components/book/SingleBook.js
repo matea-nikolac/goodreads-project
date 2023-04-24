@@ -42,20 +42,18 @@ const SingleBook = () => {
 
   const [editReview, setEditReview] = useState(null)
 
+  //to show the real book status when the page is opened instead of 'add to your books'
+  const [bookStatus, setBookStatus] = useState(null)
+
 
   //! BOOK DATA AND BOOK-USER LINKING AFTER THE USER ADDS A BOOK THE THEIR BOOKS
   // get the book data
   useEffect(() => {
     const getBook = async () => {
       try {
-        const { data } = await axios.get(`/api/books/${id}/`, {
-          headers: {
-            Authorization: `Bearer ${getToken()}`,
-          },
-        })
+        const { data } = await axios.get(`/api/books/${id}/`)
         setBooks(data)
-        // console.log('Books', data)
-        // console.log(books.book_cover)
+
       } catch (error) {
         setError(error)
       }
@@ -82,6 +80,14 @@ const SingleBook = () => {
   const handleOptionSelect = (option) => {
     setSelectedOption(option)
     setIsOpen(false)
+    setBookStatus(option)
+    if (option === 'read'){
+      setBookStatus('Read')
+    } else if (option === 'reading'){
+      setBookStatus('Currently Reading')
+    } else {
+      setBookStatus('Want to Read')
+    }
     // console.log(selectedOption)
     { books && setFormFields({ ...formFields, read: books.id })}
 
@@ -96,11 +102,21 @@ const SingleBook = () => {
       try {
 
         const { data } = await axios.get(`/api/auth/users/${getPayload().sub}/`)
-        
-        // console.log('formFiels', data)
         setFormFields(data)
         
-        // console.log(formFields)
+        console.log('data.read', data.read)
+        console.log('id', id)
+        
+        if (data.read.includes(parseInt(id))) {
+          setBookStatus('Read')
+        } else if (data.reading.includes((parseInt(id)))) {
+          setBookStatus('Reading')
+        } else if (data.wishlist.includes((parseInt(id)))) {
+          setBookStatus('Want to Read')
+        } else {
+          setBookStatus(null)
+        }
+
       } catch (error) {
         setError(error)
       }
@@ -264,9 +280,9 @@ const SingleBook = () => {
               <div className='cover-container'>
                 <img className='image' src={books.book_cover} alt={books.title} />
               </div>
-              <div className="dropdown">
+              { isAuthenticated() &&  <div className="dropdown">
                 <button className="dropdown__button" onClick={() => setIsOpen(!isOpen)}>
-                  {selectedOption}
+                  {bookStatus ? bookStatus : selectedOption}
                   <i className={`dropdown__icon ${isOpen ? 'open' : ''}`}>&#9662;</i>
                 </button>
                 {isOpen && (
@@ -282,7 +298,7 @@ const SingleBook = () => {
                     </button>
                   </div>
                 )}
-              </div>
+              </div> }
             </div>
   
             <div className='info-container'>
@@ -296,15 +312,13 @@ const SingleBook = () => {
   
           <div className='review-container'>
             <h3>Reviews</h3>
-            { isAuthenticated() ?
+            { isAuthenticated() && 
               <div className='add-review'>
                 <form onSubmit={handleSubmit}>
                   <input type="text" name="text" placeholder={`Leave a review for ${books.title}`} onChange={handleChange} value={reviewFields.text} />
                 </form>
 
               </div>
-              :
-              <p className='log-in-to-comment'>Please log in to leave a comment</p>
             }
             {bookReviews && bookReviews.length > 0 ?
               <>
@@ -349,14 +363,13 @@ const SingleBook = () => {
                 })}
               </>
               :
-              <>
+              <div className='login-and-first-review'>
                 {isAuthenticated() ?
-                  <p>Be the first to review!</p>
+                  <p className='first-review'>Be the first to review!</p>
                   :
-                  <p>Please login to leave a review</p>
+                  <p className='log-in-paragraph'>Please login to leave a review</p>
                 }
-
-              </>
+              </div>
             }
           </div>
         </>

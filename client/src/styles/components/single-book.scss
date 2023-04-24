@@ -303,9 +303,24 @@ main {
 
     }
 
+    .login-and-first-review{
+      margin: 20px 0;
 
-
-
+      .first-review {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+      }
+      .log-in-paragraph{
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+      }
+    }
+  
+  
   }
 }
 

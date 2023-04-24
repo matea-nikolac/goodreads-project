@@ -10,7 +10,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticate
 
 from lib.exceptions import exceptions
 class BookListView(APIView):
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    # permission_classes = (IsAuthenticatedOrReadOnly,)
 
     @exceptions
     def get(self, request):
@@ -27,7 +27,7 @@ class BookListView(APIView):
     
 # View is for /api/books/:pk
 class BookDetailView(APIView):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     @exceptions
     def get(self, request, pk):
