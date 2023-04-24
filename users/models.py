@@ -10,3 +10,4 @@ class User(AbstractUser):
     read = models.ManyToManyField('books.Book',related_name='read', blank=True)
     reading = models.ManyToManyField('books.Book',related_name='reading', blank=True)
     wishlist = models.ManyToManyField('books.Book',related_name='wishlist', blank=True)
+    reading_goal = models.IntegerField(null=True, blank=True)

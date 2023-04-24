@@ -23,7 +23,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         # fields = ('id', 'username', 'email', 'password', 'password_confirmation', 'books_added')
-        fields = ('id', 'username', 'email', 'password', 'password_confirmation', 'read', 'reading', 'wishlist', 'profile_image')
+        fields = ('id', 'username', 'email', 'password', 'password_confirmation', 'read', 'reading', 'wishlist', 'profile_image', 'reading_goal')
 
 class UserBookSerializer(serializers.ModelSerializer):
     class Meta:

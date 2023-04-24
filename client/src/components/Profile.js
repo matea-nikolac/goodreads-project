@@ -82,6 +82,28 @@ const Profile = () => {
     }
   }
 
+  // CAN DELETE:
+
+  const [updatedReadingGoal, setUpdatedReadingGoal] = useState('')
+  const [showUpdateInput, setShowUpdateInput] = useState(false)
+
+  const handleReadingGoalUpdate = async () => {
+    try {
+      const { data } = await axios.put(`/api/auth/users/${getPayload().sub}/`, { reading_goal: updatedReadingGoal })
+      // console.log('data', data)
+      setShowUpdateInput(false)
+      setUser(prevUser => ({ ...prevUser, reading_goal: data.reading_goal }))
+    } catch (error) {
+      setError(error)
+    }
+  }
+
+  const handleReadingGoalChange = (event) => {
+    setUpdatedReadingGoal(event.target.value)
+    setError('')
+  }
+
+
   return (
     <>
       {user ? (
@@ -110,22 +132,31 @@ const Profile = () => {
               )}
             </ul>
           </div>
-          <div className='reading-challenge'>
-            <div>
-              <h4> Reading Challenge</h4>
-              <div className='bar-text-update'>
-                <div className='progress-container'>
-                  <progress className = 'progress-bar' value="50" max="100"></progress>
-                </div>
-                <div className='read-quantity'>
-                  <p>You read 10 out of 20 books. </p>
-                </div>
-                <div>
-                  <button className='update-goal-button'>Update Goal</button>
+          {user.reading_goal > 0 && <div className='reading-challenge'>
+            <div className='reading-challenge'>
+              <div>
+                <h4>Reading Challenge</h4>
+                <div className='bar-text-update'>
+                  <div className='progress-container'>
+                    <progress className='progress-bar' value={user.read.length} max={user.reading_goal}></progress>
+                  </div>
+                  <div className='read-quantity'>
+                    <p>You read {user.read.length} out of {user.reading_goal} books.</p>
+                  </div>
+                  {showUpdateInput ? (
+                    <div className='goal-update-button-input'>
+                      <input className='update-goal-input' type='number' value={updatedReadingGoal} onChange={handleReadingGoalChange} placeholder='Enter new goal' />
+                      <button className='update-goal-button' onClick={handleReadingGoalUpdate}>Update Goal</button>
+                    </div>
+                  ) : (
+                    <button className='update-goal-button' onClick={() => setShowUpdateInput(true)}>Update Goal</button>
+                  )}
                 </div>
               </div>
             </div>
           </div>
+          }
+
           <div className='recent-updates'>
             <h4>Recent Updates</h4>
             {generateRecentUpdates('read', 'has read')}

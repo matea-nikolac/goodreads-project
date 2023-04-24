@@ -114,6 +114,23 @@
         color: #777;
       }
 
+      .goal-update-button-input {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .goal-update-button-input input {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-right: 10px;
+        font-size: 15px;
+        width: 100px;
+        box-shadow: none;
+        border-radius: 5px;
+        text-align: center;
+      }
+
       .update-goal-button {
         margin-top: 10px;
         padding: 8px 35px;
