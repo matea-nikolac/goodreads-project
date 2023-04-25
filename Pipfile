@@ -10,6 +10,7 @@ psycopg2-binary = "*"
 environ = "*"
 e = "*"
 django-environ = "*"
+django-on-heroku = "*"
 
 [dev-packages]
 
