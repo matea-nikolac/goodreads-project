@@ -10,11 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import django_on_heroku
+
 import os
 from pathlib import Path
 import environ
 env = environ.Env()
 environ.Env.read_env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -145,8 +148,5 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'client', "build", "static"),
 )
 
-import django_on_heroku # put this at the top of the file
 
-# all the rest of the settings file...
-
-django_on_heroku.settings(locals()) # put this last
+django_on_heroku.settings(locals())
