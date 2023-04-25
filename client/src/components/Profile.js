@@ -16,7 +16,7 @@ const Profile = () => {
   useEffect(() => {
     const getBooks = async () => {
       try {
-        const response = await axios.get('/api/books')
+        const response = await axios.get('/api/books/')
         const bookData = response.data
         setBooks(bookData)   
         console.log('book', bookData)
@@ -32,7 +32,7 @@ const Profile = () => {
     const getUserData = async () => {
       try {
         // setTimeout(async () => {
-        const response = await axios.get(`/api/auth/users/${getPayload().sub}`)
+        const response = await axios.get(`/api/auth/users/${getPayload().sub}/`)
         const userData = response.data
         console.log('USERDATA', userData)
         

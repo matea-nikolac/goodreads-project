@@ -20,7 +20,7 @@ const MyBooks = () => {
   useEffect(() => {
     const getBooks = async () => {
       try {
-        const response = await axios.get('/api/books')
+        const response = await axios.get('/api/books/')
         const bookData = response.data
         setBooks(bookData)   
       } catch (error) {
@@ -34,7 +34,7 @@ const MyBooks = () => {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const response = await axios.get(`/api/auth/users/${getPayload().sub}`)
+        const response = await axios.get(`/api/auth/users/${getPayload().sub}/`)
         const userData = response.data
         console.log('USERDATA', userData)
         

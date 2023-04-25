@@ -14,7 +14,7 @@ const BrowseBooks = () => {
     const getBooks = async () => {
       try {
         // setTimeout(async () => {
-        const response = await axios.get('/api/books')
+        const response = await axios.get('/api/books/')
         const bookData = response.data
         setBooks(bookData)
         console.log(bookData)
