@@ -34,7 +34,7 @@ const MyBooks = () => {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const response = await axios.get(`/api/auth/users/${getPayload().sub}`)
+        const response = await axios.get(`/api/auth/users/${getPayload().sub}/`)
         const userData = response.data
         console.log('USERDATA', userData)
         
