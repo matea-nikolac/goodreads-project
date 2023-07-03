@@ -110,7 +110,7 @@ Then I created the put method in the UserDetailView API view, which updates the 
 ![Screenshot 2023-07-03 at 14 58 11](https://github.com/matea-nikolac/goodreads-project/assets/62067357/0d5b1e6f-8ed1-41e4-bf1a-f0e8264d3246)
 
 ## Wins
-My biggest win was successfully completing my first solo full-stack project on time. Also, I'm really pleased with how the page turned out and how well it works.
+My biggest win was successfully completing my first solo full-stack project within the deadline while utilizing advanced server-side functionality to manipulate the database with complex conditions. 
 
 ## Key Takeaways
 * I gained valuable insights into the functioning of models and serializers.
