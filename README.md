@@ -66,13 +66,13 @@ In order to keep track of the tasks I need to do, I created a Trello board.
 ## Build Process
 
 ### Backend
-
 In the backend, I have implemented the `Book`, `Review`, and `User` models and their views, serializers, and URL paths.
 
 <img width="478" alt="Screenshot 2023-07-04 at 15 48 50" src="https://github.com/matea-nikolac/goodreads-project/assets/62067357/e3a9a328-d2a6-4d21-b4fc-054c835c9c65">
 
 ### Frontend
-### Login, Register, BrowseBooks
+
+#### Login, Register, BrowseBooks
 After creating the Login and Register page, I created the `BrowseBooks` component that fetches the book data from the server, filters the books by genre, and renders them in separate sections based on the categories. 
 
 #### SingleBook
@@ -124,16 +124,16 @@ I haven't noticed any bugs.
 ## Future Improvements
 * During registration, instead of displaying "Request failed with status code 422" when the password is too simple, it would be preferable to display a more specific message like "Password too simple."
 
-### My Books
+#### My Books
 * Add a search bar.
   
-### Single Book
+#### Single Book
 * Add book ratings.
 * Add dates (when a book is added to the library, when a book is read, etc.).
 * Add reading progress.
 * Add a rating option.
 * Display the average rating.
 
-### Browse Book
+#### Browse Book
 * Add a search bar
 * Implement an "Add" button next to a book cover.
