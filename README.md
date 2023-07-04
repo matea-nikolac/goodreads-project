@@ -7,8 +7,8 @@ This project was my final assignment for the General Assembly Software Engineeri
 https://goodreads-project.herokuapp.com/
 
 The following credentials can be used:
-email: ivana@email.com
-password: lozinkaa123!
+* email: ivana@email.com
+* password: lozinkaa123!
 
 
 ## Code Installation
@@ -67,11 +67,13 @@ In order to keep track of the tasks I need to do, I created a Trello board.
 
 ### Backend
 
-In the backend, I have implemented the Book, Review, and User models.
+In the backend, I have implemented the `Book`, `Review`, and `User` models and their views, serializers, and URL paths.
+
+<img width="478" alt="Screenshot 2023-07-04 at 15 48 50" src="https://github.com/matea-nikolac/goodreads-project/assets/62067357/e3a9a328-d2a6-4d21-b4fc-054c835c9c65">
 
 ### Frontend
 ### Login, Register, BrowseBooks
-After creating the Login and Register page, I created the BrowseBooks component that fetches the book data from the server, filters the books by genre, and renders them in separate sections based on the categories. 
+After creating the Login and Register page, I created the `BrowseBooks` component that fetches the book data from the server, filters the books by genre, and renders them in separate sections based on the categories. 
 
 #### SingleBook
 This frontend component was the most complex one because it handles the linking of the user and the book once the user has added a specific book to their library.
@@ -85,7 +87,7 @@ Moreover, this component also handles the reviews CRUD logic as well. Leaving re
 <img width="726" alt="Screenshot 2023-07-03 at 18 46 25" src="https://github.com/matea-nikolac/goodreads-project/assets/62067357/6c25f0c3-83d9-478d-8e1f-2c6c7de23a2a">
 
 #### MyBooks
-The MyBooks component is responsible for displaying the user's list of books categorized into "all," "read," "reading," and "wishlist." I decided to add queries in the URLs, so the user can switch between these categories and have distinct URLs for each category. This allows users to easily share or bookmark specific category links, such as the link to only "read" books or "wishlist" books. This approach improves navigation and makes it easier for users to share or bookmark specific book categories. 
+The `MyBooks` component is responsible for displaying the user's list of books categorized into "all," "read," "reading," and "wishlist." I decided to add queries in the URLs, so the user can switch between these categories and have distinct URLs for each category. This allows users to easily share or bookmark specific category links, such as the link to only "read" books or "wishlist" books. This approach improves navigation and makes it easier for users to share or bookmark specific book categories. 
 
 <img width="935" alt="Screenshot 2023-07-03 at 19 05 36" src="https://github.com/matea-nikolac/goodreads-project/assets/62067357/ea7d986b-280c-4633-8fd1-656ad7de5996">
 
@@ -94,7 +96,7 @@ Besides showing other profile-related information, the profile page also shows t
 
 <img width="1230" alt="Screenshot 2023-07-03 at 19 12 26" src="https://github.com/matea-nikolac/goodreads-project/assets/62067357/fe7122f4-f0c2-4a62-8252-561c0a70ebc4">
 
-Despite time constraints, I managed to add a "reading challenge" section. In order to create a dynamic progress bar, I designed it to retrieve the user's reading progress by checking the length of their "read" list in the user model (user.read.length). This ensures that the progress bar accurately reflects the number of books the user has read. Additionally, the reading goal can be updated at any time, allowing users to adjust their target as needed.
+Despite time constraints, I managed to add a "reading challenge" section. In order to create a dynamic progress bar, I designed it to retrieve the user's reading progress by checking the length of their "read" list (`user.read.length`) \in the user model. This ensures that the progress bar accurately reflects the number of books the user has read. Additionally, the reading goal can be updated at any time, allowing users to adjust their target as needed.
 
 <img width="1125" alt="Screenshot 2023-07-03 at 19 30 37" src="https://github.com/matea-nikolac/goodreads-project/assets/62067357/5d2b4403-cf5a-4b7f-af10-641cdaf2bb93">
 
@@ -105,7 +107,7 @@ In order to achieve that, I added reading, reading, and wishlist custom fields t
 
 ![Screenshot 2023-07-03 at 15 00 56](https://github.com/matea-nikolac/goodreads-project/assets/62067357/a55033b4-6fa6-4933-96ee-0b208b0d9c1c)
 
-Then I created the put method in the UserDetailView API view, which updates the user's details, including their book lists (read, reading, wishlist). It compares the updated book lists with the original lists to handle removing books from one list and adding them to another if necessary. Finally, it saves the updated user data and returns the serialized user information.
+Then I created the put method in the `UserDetailView` API view, which updates the user's details, including their book lists (read, reading, wishlist). It compares the updated book lists with the original lists to handle removing books from one list and adding them to another if necessary. Finally, it saves the updated user data and returns the serialized user information.
 
 ![Screenshot 2023-07-03 at 14 58 11](https://github.com/matea-nikolac/goodreads-project/assets/62067357/0d5b1e6f-8ed1-41e4-bf1a-f0e8264d3246)
 
@@ -117,8 +119,21 @@ My biggest win was successfully completing my first solo full-stack project with
 * I learned how to define and manipulate data structures, establish relationships between different entities, and ensure the smooth transfer of data between the application and the database.
 
 ## Bugs
-login and register page suddenly not working
+I haven't noticed any bugs.
 
 ## Future Improvements
-* adding a photo upload option for the profile photo. ofa user
+* During registration, instead of displaying "Request failed with status code 422" when the password is too simple, it would be preferable to display a more specific message like "Password too simple."
 
+### My Books
+* Add a search bar.
+  
+### Single Book
+* Add book ratings.
+* Add dates (when a book is added to the library, when a book is read, etc.).
+* Add reading progress.
+* Add a rating option.
+* Display the average rating.
+
+### Browse Book
+* Add a search bar
+* Implement an "Add" button next to a book cover.
