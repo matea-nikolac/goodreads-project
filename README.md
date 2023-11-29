@@ -1,4 +1,5 @@
 # goodreads
+<img width="1500" alt="Screenshot 2023-11-29 at 10 45 55" src="https://github.com/matea-nikolac/goodreads-project/assets/62067357/abca1508-6ad5-4555-b4af-eaaf3af5cc47">
 
 ## Description
 This project was my final assignment for the General Assembly Software Engineering Immersive course. The objective was to develop a full-stack app using React for the frontend and Django REST Framework for managing data from a Postgres database. Inspired by my love for books and frequent usage of Goodreads, I chose to create a simplified version of a book-related app.
